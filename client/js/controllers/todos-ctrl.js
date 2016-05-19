@@ -35,4 +35,49 @@ angular.module('todoController', [])
 			}
 		};
 
+	    /*ADDED NEW STUFF*/
+	    // ONCHANGE
+
+/*	    $scope.onCheckBoxChangeResult = "";
+	    
+	    $scope.onCheckBoxChange = function () {
+		$scope.onCheckBokChangeResult = "Task is completed" + ($scope.checkSelected ? todo.text : todo.text +" is completed");
+		};
+*/
+/*	    $scope.onChange = function(id) {
+		$scope.loading = true;
+		
+		Todos.change(id)
+
+		.success(function(data) {
+		    $scope.loading = false;
+		    $scope.todos = data;
+		    });
+		};
+		
+*/
+
+	    // DELETE ==================================================================
+	    // delete a todo after checking it
+	    $scope.deleteTodo = function(id) {
+		$scope.loading = true;
+
+		Todos.delete(id)
+		// if successful creation, call our get function to get all the new todos
+		.success(function(data) {
+		    $scope.loading = false;
+		    $scope.todos = data; // assign our new list of todos
+		    });
+		};
+	    /*END OF NEWSTUFF*/
+	   
+
 	}]);
+/*
+.controller('myCtrl', ['$scope', function($scope) {
+    $scope.count = 0;
+    $scope.myFunc = function() {
+        $scope.count++;
+    };
+}]);
+*/

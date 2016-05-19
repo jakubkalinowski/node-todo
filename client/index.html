@@ -26,6 +26,15 @@
 	<script src="js/services/todos-service.js"></script> <!-- load our todo service -->
 	<script src="js/todos-main.js"></script> <!-- load our main application -->
 
+
+<style>
+  .checked{backgroung-color:#f0f0f0; 
+  color:#666;
+  text-decoration: line-through;
+}
+
+</style>
+
 </head>
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
@@ -40,16 +49,37 @@
 		<div id="todo-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 
-				<div class="checkbox"  ng-repeat="todo in todos">
+			  <!-- ADDED NEW STUFF-->
+			  <!-- LOOP OVER THE TODOS IN $scope.todos -->
+		 <!-- <div class="checkbox" ng-repeat="todo in todos">
+			    <label>
+			      <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+			      </label>
+			    </div>-->
+
+		 
+
+			  <!--END OF NEW STUFF-->
+
+
+
+				<div class="checkbox" ng-repeat="todo in todos">
                                   <label>
-                                  <input type="checkbox"> {{ todo.text }}
-                                  </label>
+				    <input type="checkbox" ng-change="change">{{ todo.text}}
+				    <!-- <input type="checkbox">{{ todo.text }}-->
+<!--				   <input type="checkbox" ng-model="checkSelected" ng-change="onCheckBoxChange()">{{ todo.text }}{{ onCheckBoxChangeResult }}
+-->                                  </label>
+				  <label>
+				    <p ng-click="deleteTodo(todo._id)">[Delete]</p>
+				    </lable>
                                  </div>
-                             
+
+
+                      
 				<p class="text-center" ng-show="loading">
 					<span class="fa fa-spinner fa-spin fa-3x"></span>
 				</p>
-
+		<!--***NEW***--><!-- <li ng-click="deleteTodo(todo._id)">[Delete]</li>-->
 			</div>
 		</div>
 
@@ -65,11 +95,24 @@
 
 					<!-- createToDo() WILL CREATE NEW TODOS -->
 					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+
 				</form>
 			</div>
 		</div>
-
-
+		<!--
+		<div id="todo-form">
+		  <input type="text" ng-change="myFunc()" ng-model="myValue" />
+		  <p>The input field has changed {{count}} times.</p>
+		</div>
+		-->
+		
+            <!-- ADDED STUFF
+                <input ng-model="foo" value="bar">
+                <!-- Button tag with ng-click directive, and
+                string expression 'buttonText'
+                wrapped in "{{ }}" markup -->
+               <!-- <button ng-click="changeFoo()">{{buttonText}}</button>-->
+	   <!-- END OF ADDED STUFF -->
 	</div>
 
 </body>
